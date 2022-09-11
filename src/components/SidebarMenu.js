@@ -2,72 +2,100 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { useEffect } from 'react';
 
 const SidebarLink = styled(Link)`
-display:flex;
-color:#e1e9fc;
-justify-content:space-between;
-align-items:center;
-padding:20px;
-list-style:none;
-height:60px;
-text-decoration:none;
-font-size:18px;
+    display:flex;
+    color:#e1e9fc;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px;
+    list-style:none;
+    height:60px;
+    text-decoration:none;
+    font-size:18px;
 
-&:hover{
-background:#252831;
-border-left:4px solid #623ce4;
-currsor:pointer;
-}
-`;
+    &:hover{
+    background:#252831;
+    border-left:4px solid #623ce4;
+    currsor:pointer;
+    }
+    `;
 
 const SidebarLabel = styled.span`
-margin-left: 16px;
-`
+    margin-left: 16px;
+    `;
+
+const SidebarIcon = styled.span`
+    margin-left: 16px;
+    `;
 const DroupdownLink = styled(Link)`
-background:#414757;
-height:60px;
-padding-left:3rem;
-display:flex;
-align-items:center;
-text-decoration:none;
-color:#f5f5f5;
-font-size:18px;
+    background:#414757;
+    height:40px;
+    padding-left:3rem;
+    display:flex;
+    align-items:center;
+    text-decoration:none;
+    color:#f5f5f5;
+    font-size:18px;
+    
 
-&hover{
-    background: #632ce4;
-    cursor:pointer;
-}
-`
+    &:hover{
+        background: #632ce4;
+        transition:350ms;
+        cursor:pointer;
+    }
+    `;
+
 const SidebarMenu = ({ item }) => {
-    const [subnav, setSubnav] = useState(false)
 
+    const [subnav, setSubnav] = useState(false)
     const showSubnav = () => setSubnav(!subnav)
+
+    // const [timeOut, setTime]=useState()
+
+    // useEffect(()=>{
+    //      setTimeout(() => {    
+    //           setTime(showSubnav)   
+    //          }, 3000);
+    // },[])
+    // setTimeout(() => {
+    //     showSubnav
+    // }, 5000);
+
     return (
         <>
-            <SidebarLink to={item.path} onClick={item.subnav && showSubnav}>
-                <div>
-                    <SidebarLabel>{item.title}</SidebarLabel>
+            <SidebarLink to='' onClick={ item.submenu && showSubnav} >
+                <div> 
+                    
+                    <SidebarIcon> {item.icons}</SidebarIcon>
+                    <SidebarLabel>
+                        {item.title}
+                    </SidebarLabel>
                 </div>
                 <div>
                     {
-                        item.subNav && subnav
-                            ? item.iconOpened : item.subNav
+                        item.submenu && subnav
+                            ? item.iconOpen : item.submenu
                                 ? item.iconClosed
                                 : null
                     }
                 </div>
             </SidebarLink>
             {
-                subnav && item.subNav.map((item, index) => {
+                subnav && item.submenu.map((item, index) => {
+                    
                     return (
                         <DroupdownLink to={item.path} key={index}>
-                            {item.icon}
-                        </DroupdownLink>
+                            {item.icons}
+                           <SidebarLabel>{item.title}</SidebarLabel>
+                        </DroupdownLink>                    
                     )
 
                 })
+              
             }
+            
         </>
     );
 };

@@ -1,15 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
-import Dropdown from './pages/Dropdown';
 import Sidebar from './components/Sidebar';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Routes } from 'react-router-dom';
+import Login from './pages/Login/Login';
+
+
 function App() {
   return (
-    <>
-      <Router>
-        <Sidebar></Sidebar>
-      </Router>
-    </>
+    <div className='bg-white h-auto'>
+    <Routes>
+      <Route path='/' element={<Login></Login>}></Route>
+      <Route path='/sidebar' element={<Sidebar></Sidebar>}></Route>
+      {/* <Route path='/home' element={<Home></Home>}></Route> */}
+    </Routes>
+    
+
+    </div>
   );
 }
 

@@ -1,52 +1,50 @@
 import React from 'react';
-import * as FaIcons from 'react-icons/fa'
-import * as AiIcons from 'react-icons/ai'
-import * as IoIcons from 'react-icons/io'
-import * as RiIcons from 'react-icons/ri'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBook, faChevronDown, faChevronUp, faCoffee, faHome, faUser,faBolt } from '@fortawesome/free-solid-svg-icons'
 
 export const SidebarData = [
     {
         title: "Overwiew",
         path: '/overview',
-        icons: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
-        iconClosed: <RiIcons.RiArrowDownFill></RiIcons.RiArrowDownFill>,
-        iconOpen: <RiIcons.RiArrowUpFill></RiIcons.RiArrowUpFill>,
+        icons: <FontAwesomeIcon icon={faHome}></FontAwesomeIcon>,
+        iconClosed: <FontAwesomeIcon icon={faChevronUp}></FontAwesomeIcon>,
+        iconOpen: <FontAwesomeIcon icon={faChevronDown}></FontAwesomeIcon>,
         submenu: [
             {
                 title: 'Users',
                 path: '/overview/users',
-                icons: <IoIcons.IoIosPaper></IoIcons.IoIosPaper>
+                icons: <FontAwesomeIcon icon={faUser}></FontAwesomeIcon>
             },
             {
                 title: 'Revenue',
                 path: '/overview/revenue',
-                icons: <IoIcons.IoIosPaper></IoIcons.IoIosPaper>
+                icons: <FontAwesomeIcon icon={faCoffee}></FontAwesomeIcon>
             }
         ]
     },
     {
         title: "Reports",
         path: '/reports',
-        icons: <AiIcons.AiFillHome></AiIcons.AiFillHome>,
-        iconClosed: <RiIcons.RiArrowDownFill></RiIcons.RiArrowDownFill>,
-        iconOpen: <RiIcons.RiArrowUpFill></RiIcons.RiArrowUpFill>,
+        icons: <FontAwesomeIcon icon={faBook}></FontAwesomeIcon>,
+        iconClosed: <FontAwesomeIcon icon={faChevronUp}></FontAwesomeIcon>,
+        iconOpen: <FontAwesomeIcon icon={faChevronDown}></FontAwesomeIcon>,
         submenu: [
             {
                 title: 'Reports 1',
                 path: '/overview/reports1',
-                icons: <IoIcons.IoIosPaper></IoIcons.IoIosPaper>
+                icons: <FontAwesomeIcon icon={faBolt}></FontAwesomeIcon>
             },
             {
                 title: 'Reports 2',
                 path: '/overview/reports2',
-                icons: <IoIcons.IoIosPaper></IoIcons.IoIosPaper>
+                icons: <FontAwesomeIcon icon={faBolt}></FontAwesomeIcon>
             }
         ]
     },
     {
         title: "Products",
         path: '/products',
-        icons: <FaIcons.FaCartPlus></FaIcons.FaCartPlus>
+        icons: <FontAwesomeIcon icon={faCoffee}></FontAwesomeIcon>
     }
 ]
 // const SidebarData = () => {
